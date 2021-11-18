@@ -60,5 +60,5 @@ Test task - Market
 5. Test API documentation
 
     ```
-    /api/docs/
+    http://127.0.0.1:8000/api/docs/
     ```

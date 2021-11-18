@@ -3,16 +3,30 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework import status
 
-from market.models import Product, Category, Shop
+from market.models import Product, Category
 from market.serializers.product_serializer import ProductSerializer
 
 
 class ProductDetailView(RetrieveUpdateAPIView):
     serializer_class = ProductSerializer
+    queryset = ''
 
     def get_object(self):
-        product = Product.objects.get(id=self.kwargs['prod_id'])
+        product = Product.objects.get(id=self.kwargs['prod_id'],
+                                      category=self.kwargs['cat_id'],
+                                      shop=self.kwargs['shop_id'])
         return product
+
+    def retrieve(self, request, *args, **kwargs):
+        prod_id = kwargs['prod_id']
+        shop_id = kwargs['shop_id']
+        cat_id = kwargs['cat_id']
+        prod = Product.objects.filter(id=prod_id, category=cat_id, shop=shop_id)
+        if not prod:
+            raise ValidationError(detail='Product is not found', code=400)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
 
 
 class ProductListView(ListCreateAPIView):

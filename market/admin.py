@@ -10,14 +10,9 @@ class ShopAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name',)
+    list_display = ('id', 'name', 'shop')
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', "name", "category", 'update_counter')
-
-
-@admin.register(Store)
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ('shop', "product",)

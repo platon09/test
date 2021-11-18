@@ -11,3 +11,7 @@ class ShopListView(ListAPIView):
 class ShopDetailView(RetrieveAPIView):
     queryset = Shop.objects.all()
     serializer_class = ShopSerializer
+
+    def get_object(self):
+        shop = Shop.objects.get(id=self.kwargs['shop_id'])
+        return shop

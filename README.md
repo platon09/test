@@ -30,8 +30,8 @@ Test task - Market
     ```
     2.3. Run the following commands:
     ```postgresplsql
-    CREATE DATABASE market_db_test with encoding='UTF-8' LC_CTYPE='en_US.UTF-8' LC_COLLATE='en_US.UTF-8' TEMPLATE=template0;;
-    CREATE ROLE marketuser WITH PASSWORD 'qwerty123'
+    CREATE DATABASE market_db_test with encoding='UTF-8' LC_CTYPE='en_US.UTF-8' LC_COLLATE='en_US.UTF-8' TEMPLATE=template0;
+    CREATE ROLE marketuser WITH PASSWORD 'qwerty123';
     GRANT ALL PRIVILEGES ON DATABASE market_db_test to marketuser;
     ALTER ROLE marketuser LOGIN CREATEDB;
     ```

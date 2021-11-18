@@ -56,3 +56,9 @@ Test task - Market
     ```bash
     ./manage.py runserver
     ```
+    
+5. Test API documentation
+
+    ```
+    /api/docs/
+    ```
